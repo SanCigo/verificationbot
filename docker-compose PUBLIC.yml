@@ -45,5 +45,7 @@ services:
       - author_name=
       # The channel id for a channel for tickets, if you would like to mention a channel instead of a user for reverification
       - ticket_id=
+      # If true, accepts only emails in a given list
+      - whitelist_mode=
     volumes:
       - ./data:/app/data

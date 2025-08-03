@@ -20,6 +20,7 @@ class Verification(commands.Cog):
 			self.used_emails = os.environ["used_emails"]
 			self.warn_emails = os.environ["warn_emails"]
 			self.moderator_email = os.environ["moderator_email"]
+			self.whitelist_emails = os.environ.get("whitelist_emails", "")
 
 			self.sample_username = os.environ["sample"]
 			self.verify_domain = os.environ["domain"]
@@ -52,6 +53,8 @@ class Verification(commands.Cog):
 
 			self.used_emails = osp.join(self.bot.current_dir, self.bot.data_path, self.used_emails)
 			self.warn_emails = osp.join(self.bot.current_dir, self.bot.data_path, self.warn_emails)
+			if self.whitelist_emails:
+				self.whitelist_emails = osp.join(self.bot.current_dir, self.bot.data_path, self.whitelist_emails)
 
 		except KeyError as e:
 			print(f"Config error.\n\tKey Not Loaded: {e}. Please set up an environment variable for this key and restart.")
@@ -137,6 +140,17 @@ class Verification(commands.Cog):
 				await ctx.send(
 					f"{ctx.author.mention} Use your own email, not the sample one. Please try again with your own email.")
 				return
+
+			# Whitelisted emails
+			if self.whitelist_emails:
+				if not osp.exists(self.whitelist_emails):
+					await ctx.send(f"Error! The whitelist file {self.whitelist_emails} does not exist.")
+					return
+				with open(self.whitelist_emails, 'r') as file:
+					whitelist = [line.strip().lower() for line in file.readlines()]
+				if not any(arg.lower() == email.lower() for email in whitelist):
+					await ctx.send(f"Error! The email {arg} is not in the whitelist.")
+					return
 
 			# Checks the warning email file to notify moderators if an email on the list is used. For example, a list of professor emails could be loaded.
 			try:

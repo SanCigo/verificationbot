@@ -31,6 +31,7 @@ ENV notify_id=
 ENV admin_id=
 ENV ticket_id=
 ENV author_name=
+ENV whitelist_mode=
 
 COPY . /app
 

@@ -147,3 +147,6 @@ updater.py
 !commands.json
 !demo_config.toml
 /verificationbot.service
+
+# Private docker
+docker-compose.yml
