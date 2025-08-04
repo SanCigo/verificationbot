@@ -17,7 +17,8 @@ data_path = "data"  # folder name
 extensions = ["background", "errors", "misc", "reactor", "utility", "verification"]
 
 # Load new intents system. This is required for the new reactors functionality.
-intents = discord.Intents.default()
+intents = discord.Intents.all()
+intents.message_content = True  # This is required for the bot to read message content.
 intents.guilds = True
 intents.members = True
 intents.messages = True
