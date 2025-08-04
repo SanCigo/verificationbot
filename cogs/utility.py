@@ -1,6 +1,7 @@
 from discord.ext import commands
 import time
 import datetime
+import asyncio
 
 
 class Utility(commands.Cog):
@@ -36,4 +37,4 @@ class Utility(commands.Cog):
 
 
 def setup(bot):
-	bot.add_cog(Utility(bot))
+	asyncio.run(bot.add_cog(Utility(bot)))

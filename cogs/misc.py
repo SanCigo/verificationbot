@@ -1,6 +1,7 @@
 from os import name
 import discord
 from discord.ext import commands
+import asyncio
 
 
 class Misc(commands.Cog):
@@ -41,4 +42,4 @@ class Misc(commands.Cog):
 
 
 def setup(bot):
-	bot.add_cog(Misc(bot))
+	asyncio.run(bot.add_cog(Misc(bot)))

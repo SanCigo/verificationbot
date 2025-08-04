@@ -98,11 +98,11 @@ async def on_message(message):
 
 # Loads extensions before running bot
 if __name__ == "__main__":
-
+	import asyncio
 	count = 0
 	for extension in extensions:
 		try:
-			bot.load_extension(f"cogs.{extension}")
+			asyncio.run(bot.load_extension(f"cogs.{extension}"))
 			print(f"Cog | Loaded {extension}")
 			count += 1
 		except Exception as error:

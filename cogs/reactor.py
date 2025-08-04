@@ -1,5 +1,6 @@
 from discord.ext import commands
 from sqlalchemy.exc import OperationalError
+import asyncio
 
 from util.data.guild_data import GuildData
 
@@ -134,4 +135,4 @@ class Reactor(commands.Cog):
 
 
 def setup(bot):
-	bot.add_cog(Reactor(bot))
+	asyncio.run(bot.add_cog(Reactor(bot)))

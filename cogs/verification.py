@@ -3,6 +3,7 @@ import os.path as osp
 import smtplib
 import ssl
 import random
+import asyncio
 
 import discord
 from discord.ext import commands
@@ -361,4 +362,4 @@ class Verification(commands.Cog):
 
 
 def setup(bot):
-	bot.add_cog(Verification(bot))
+	asyncio.run(bot.add_cog(Verification(bot)))

@@ -1,5 +1,6 @@
 import os
 from discord.ext import commands
+import asyncio
 
 from util.email import is_valid_email
 
@@ -60,4 +61,4 @@ class Background(commands.Cog):
 
 
 def setup(bot):
-	bot.add_cog(Background(bot))
+	asyncio.run(bot.add_cog(Background(bot)))

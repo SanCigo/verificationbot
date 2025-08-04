@@ -5,6 +5,7 @@ import copy
 # from discord.errors import InvalidArgument
 from discord.ext import commands
 from discord.ext.commands import errors as cmderr
+import asyncio
 
 from util.email import is_valid_email
 
@@ -63,4 +64,4 @@ class Errors(commands.Cog):
 
 
 def setup(bot):
-	bot.add_cog(Errors(bot))
+	asyncio.run(bot.add_cog(Errors(bot)))
