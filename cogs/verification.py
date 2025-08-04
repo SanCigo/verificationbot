@@ -8,8 +8,6 @@ import discord
 from discord.ext import commands
 
 from util.email import is_valid_email
-from bot import bot
-
 
 class Verification(commands.Cog):
 	def __init__(self, bot):
@@ -73,7 +71,7 @@ class Verification(commands.Cog):
 
 	# Instructions on how to verify.
 	# noinspection PyUnusedLocal
-	@bot.command(name="vhelp", aliases=["helpme", "help_me", "verify_help", "Vhelp", "Helpme", "Help_me", "Verify_help"])
+	@commands.command(name="vhelp", aliases=["helpme", "help_me", "verify_help", "Vhelp", "Helpme", "Help_me", "Verify_help"])
 	async def verify_help(self, ctx, *args):
 		"""
 		Help on how to verify.
